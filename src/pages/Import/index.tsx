@@ -29,10 +29,9 @@ const Import: React.FC = () => {
 
     try {
       await api.post('/transactions/import', data);
-
-      history.push('/');
+      history.goBack();
     } catch (err) {
-      console.log(err.response.error);
+      console.log(err);
     }
   }
 
@@ -42,6 +41,7 @@ const Import: React.FC = () => {
       name: file.name,
       readableSize: filesize(file.size),
     }));
+
     setUploadedFiles(uploadFiles);
   }
 
